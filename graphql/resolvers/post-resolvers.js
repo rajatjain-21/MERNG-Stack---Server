@@ -28,6 +28,9 @@ module.exports = {
   Mutation: {
     createPost: async (_, { body }, context) => {
       try {
+        if (body.trim() === "") {
+          throw new Error("Post body cannot be empty");
+        }
         const user = checkAuth(context);
         console.log(user);
         const newPost = new Post({
