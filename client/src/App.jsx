@@ -6,16 +6,21 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Menubar from "./components/Menubar";
+import { AuthProvider } from "./context/auth";
+import AuthRoute from "./utils/AuthRoute";
+
 function App() {
   return (
-    <Container>
-      <Router>
-        <Menubar />
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-      </Router>
-    </Container>
+    <AuthProvider>
+      <Container>
+        <Router>
+          <Menubar />
+          <Route exact path="/" component={Home} />
+          <AuthRoute path="/login" component={Login} />
+          <AuthRoute path="/register" component={Register} />
+        </Router>
+      </Container>
+    </AuthProvider>
   );
 }
 
