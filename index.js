@@ -5,7 +5,11 @@ const { MONGODB } = require("./config");
 const typeDefs = require("./graphql/Schema");
 const resolvers = require("./graphql/resolvers");
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => ({ req })
+});
 mongoose
   .connect(MONGODB, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
