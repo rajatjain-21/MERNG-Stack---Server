@@ -12,7 +12,7 @@ const PostForm = props => {
     createPostCallback,
     initialState
   );
-  const [createPost, { error }] = useMutation(CREATE_POST, {
+  const [createPost] = useMutation(CREATE_POST, {
     update(proxy, result) {
       const data = proxy.readQuery({ query: FETCH_POST });
       data.getPosts = [result.data.createPost, ...data.getPosts];

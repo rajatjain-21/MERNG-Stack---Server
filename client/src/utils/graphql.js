@@ -15,7 +15,9 @@ export const FETCH_POST = gql`
         createdAt
       }
       likes {
+        id
         userName
+        createdAt
       }
     }
   }
