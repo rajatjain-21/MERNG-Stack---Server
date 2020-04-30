@@ -8,3 +8,16 @@
   width: 400px;
   margin: auto;
 }
+.zoom {
+  padding: 50px;
+  background-color: green;
+  transition: transform 0.2s; /* Animation */
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  cursor: pointer;
+  transform: scale(
+    1.1
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}

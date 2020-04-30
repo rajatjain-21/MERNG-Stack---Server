@@ -21,14 +21,15 @@ const PostForm = props => {
     },
     refetchQueries: _ => [{ query: FETCH_POST }],
     onError(err) {
-      console.log(err.graphQLErrors[0].extensions.exception.errors);
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(err.graphQLErrors[0].extensions.exception);
+      setErrors(err.graphQLErrors[0].extensions.exception);
     },
     variables: values
   });
 
   function createPostCallback() {
     createPost();
+    setErrors({});
   }
 
   return (

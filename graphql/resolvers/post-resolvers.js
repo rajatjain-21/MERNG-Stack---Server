@@ -29,7 +29,11 @@ module.exports = {
     createPost: async (_, { body }, context) => {
       try {
         if (body.trim() === "") {
-          throw new Error("Post body cannot be empty");
+          throw new UserInputError("Post body cannot be empty", {
+            errors: {
+              body: "Post body cannot be empty"
+            }
+          });
         }
         const user = checkAuth(context);
         console.log(user);
@@ -63,7 +67,7 @@ module.exports = {
     createComment: async (_, { postId, body }, context) => {
       try {
         const user = checkAuth(context);
-        if (body.trim == "") {
+        if (body.trim() === "") {
           throw new UserInputError("Comment body must not be empty", {
             errors: {
               body: "Comment body must not be empty"

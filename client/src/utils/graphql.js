@@ -83,12 +83,29 @@ export const REGISTER_USER = gql`
   }
 `;
 
+export const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`;
+
 export const LIKE_POST = gql`
   mutation likePost($postId: ID!) {
     likePost(postId: $postId) {
       id
       userName
       createdAt
+    }
+  }
+`;
+
+export const CREATE_COMMENT = gql`
+  mutation createComment($postId: ID!, $body: String!) {
+    createComment(postId: $postId, body: $body) {
+      id
+      userName
+      createdAt
+      body
     }
   }
 `;
